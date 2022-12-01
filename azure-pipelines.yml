@@ -48,6 +48,8 @@ steps:
     veracodeAppProfile: '$(AppName)'
     version: '$(AppName)_$(build.buildNumber)'
     filepath: '$(build.artifactstagingdirectory)'
+    sandboxName: 'DemoUploadScan'
+    createSandBox: true
     scanStatusCheckInterval: '60'
     maximumWaitTime: '360'
 
