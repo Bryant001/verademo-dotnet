@@ -48,7 +48,6 @@ steps:
     veracodeAppProfile: '$(AppName)'
     version: '$(AppName)_$(build.buildNumber)'
     filepath: '$(build.artifactstagingdirectory)'
-    sandboxName: 'DemoUploadScan'
     maximumWaitTime: '360'
 
 - task: Veracode Flaw Importer@3
