@@ -15,40 +15,42 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-# - task: NuGetToolInstaller@1
+- task: NuGetToolInstaller@1
 
-# - task: NuGetCommand@2
-  # inputs:
-    # restoreSolution: '$(solution)'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
 
-# - task: VSBuild@1
-  # inputs:
-    # solution: '$(solution)'
-    # msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    # platform: '$(buildPlatform)'
-    # configuration: '$(buildConfiguration)'
-    # clean: true
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    clean: true
 
-# - task: DownloadPipelineArtifact@2
-  # inputs:
-    # patterns: '**/*.exe,**/*.dll,**/*.pdb'
+- task: DownloadPipelineArtifact@2
+  inputs:
+    patterns: '**/*.exe,**/*.dll,**/*.pdb'
 
-# - task: PublishBuildArtifacts@1
-  # inputs:
-    # PathtoPublish: $(Build.ArtifactStagingDirectory)
-    # ArtifactName: $(AppName)
-    # publishLocation: 'Container'
-    # TargetPath: $(Build.ArtifactStagingDirectory)
-    # continueOnError: true
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: $(Build.ArtifactStagingDirectory)
+    ArtifactName: $(AppName)
+    publishLocation: 'Container'
+    TargetPath: $(Build.ArtifactStagingDirectory)
+    continueOnError: true
 
-# - task: Veracode@3
-  # inputs:
-    # ConnectionDetailsSelection: 'Endpoint'
-    # AnalysisService: 'Veracode'
-    # veracodeAppProfile: '$(AppName)'
-    # version: '$(AppName)_$(build.buildNumber)'
-    # filepath: '$(build.artifactstagingdirectory)'
-    # maximumWaitTime: '360'
+- task: Veracode@3
+  inputs:
+    ConnectionDetailsSelection: 'Endpoint'
+    AnalysisService: 'Veracode'
+    veracodeAppProfile: '$(AppName)'
+    version: '$(AppName)_$(build.buildNumber)'
+    filepath: '$(build.artifactstagingdirectory)'
+    failBuildIfUploadAndScanBuildStepFails: true
+    importResults: true
+    maximumWaitTime: '360'
 
 - task: Veracode Flaw Importer@3
   inputs:
