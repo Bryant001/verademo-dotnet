@@ -26,4 +26,6 @@ steps:
     workItemType: 'Issue'
     area: '$(system.teamProject)'
     overwriteAreaPathInWorkItemsOnImport: true
+    addCweAsATag: false
     flawImportLimit: '250'
+    customFields: 'DEV:JP'
