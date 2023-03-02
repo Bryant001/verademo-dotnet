@@ -1,10 +1,5 @@
-# ASP.NET
-# Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
-
 trigger:
-- main
+- manual
 
 pool:
   vmImage: 'windows-latest'
@@ -43,7 +38,7 @@ steps:
 
 - task: Veracode@3
   inputs:
-    ConnectionDetailsSelection: 'Endpoint'
+    ConnectionDetailsSelection: 'Service Connection'
     AnalysisService: 'Veracode'
     veracodeAppProfile: '$(AppName)'
     version: '$(AppName)_$(build.buildNumber)'
@@ -55,7 +50,7 @@ steps:
 
 - task: Veracode Flaw Importer@3
   inputs:
-    ConnectionDetailsSelection: 'Endpoint'
+    ConnectionDetailsSelection: 'Service Connection'
     AnalysisService: 'Veracode'
     veracodeAppProfile: '$(AppName)'
     scanType: 'Dynamic, Static, and Software Composition Analysis'
