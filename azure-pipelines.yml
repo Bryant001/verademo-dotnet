@@ -43,7 +43,7 @@ steps:
     veracodeAppProfile: '$(AppName)'
     version: '$(AppName)_$(build.buildNumber)'
     filepath: '$(build.artifactstagingdirectory)'
-    optargs: '-scanpollinginterval 30'
+    optargs: '-deleteIncompleteScan 1'
     failBuildIfUploadAndScanBuildStepFails: true
     importResults: true
     maximumWaitTime: '360'
