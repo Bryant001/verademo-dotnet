@@ -47,7 +47,7 @@ steps:
     AnalysisService: 'Veracode Connection'
     veracodeAppProfile: '$(AppName)'
     version: '$(AppName)_$(build.buildNumber)'
-    filepath: '$(build.artifactstagingdirectory)'
+    filepath: '$(Build.ArtifactStagingDirectory)'
     sandboxName: '$(sandboxName)'
     createSandBox: true
     failBuildIfUploadAndScanBuildStepFails: true
