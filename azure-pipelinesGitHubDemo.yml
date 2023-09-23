@@ -50,7 +50,6 @@ steps:
     filepath: '$(build.artifactstagingdirectory)'
     sandboxName: '$(sandboxName)'
     createSandBox: true
-    optargs: '-deleteIncompleteScan 1'
     failBuildIfUploadAndScanBuildStepFails: true
     importResults: true
     maximumWaitTime: '360'
