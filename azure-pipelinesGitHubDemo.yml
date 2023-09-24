@@ -42,8 +42,6 @@ steps:
     veracodeAppProfile: '$(AppName)'
     version: '$(AppName)_$(build.buildNumber)'
     filepath: '$(build.artifactstagingdirectory)'
-    sandboxName: '$(sandboxName)'
-    createSandBox: true
     failBuildIfUploadAndScanBuildStepFails: true
     importResults: true
     maximumWaitTime: '45'
