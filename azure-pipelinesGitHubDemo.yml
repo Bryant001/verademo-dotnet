@@ -41,7 +41,6 @@ steps:
     continueOnError: true
 
 - task: Veracode@3
-  displayName: Veracode Upload & Scan
   inputs:
     ConnectionDetailsSelection: 'Service Connection'
     AnalysisService: 'Veracode Connection'
