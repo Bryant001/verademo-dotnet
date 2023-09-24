@@ -46,12 +46,12 @@ steps:
     AnalysisService: 'Veracode Connection'
     veracodeAppProfile: '$(AppName)'
     version: '$(AppName)_$(build.buildNumber)'
-    filepath: '$(Build.ArtifactStagingDirectory)'
-    sandboxName: 'GitDemo'
+    filepath: '$(build.artifactstagingdirectory)'
+    sandboxName: '$(sandboxName)'
     createSandBox: true
     failBuildIfUploadAndScanBuildStepFails: true
     importResults: true
-    maximumWaitTime: '60'
+    maximumWaitTime: '45'
 
 - task: PowerShell@2
   displayName: Veracode Software Composition Analysis
