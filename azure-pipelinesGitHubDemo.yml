@@ -49,3 +49,14 @@ steps:
     failBuildIfUploadAndScanBuildStepFails: true
     importResults: true
     maximumWaitTime: '60'
+
+- task: PowerShell@2
+  displayName: Veracode Software Composition Analysis
+  inputs:
+    targetType: 'inline'
+    script: |
+      $env:SRCCLR_API_TOKEN="$(SCA_TOKEN)"
+      Set-ExecutionPolicy AllSigned -Scope Process -Force
+      iex ((New-Object System.Net.WebClient).DownloadString('https://download.srcclr.com/ci.ps1'))
+      srcclr scan
+    pwsh: true
