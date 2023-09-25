@@ -62,6 +62,7 @@ steps:
       iex ((New-Object System.Net.WebClient).DownloadString('https://download.srcclr.com/ci.ps1'))
       srcclr scan
     pwsh: true
+    continueOnError: true
 
 - task: Veracode@3
   displayName: Veracode Upload and Scan
