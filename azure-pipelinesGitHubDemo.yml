@@ -67,13 +67,28 @@ steps:
 #     ArtifactName: 'Build'
 #     publishLocation: 'Container'
 
-- task: PowerShell@2
-  displayName: Veracode Software Composition Analysis
+# - task: PowerShell@2
+#   displayName: Veracode Software Composition Analysis
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       $env:SRCCLR_API_TOKEN="$(SCA_TOKEN)"
+#       Set-ExecutionPolicy AllSigned -Scope Process -Force
+#       iex ((New-Object System.Net.WebClient).DownloadString('https://download.srcclr.com/ci.ps1'))
+#       srcclr scan
+#     pwsh: true
+
+- task: Veracode Flaw Importer@3
+  displayName: Veracode Flaw Import
   inputs:
-    targetType: 'inline'
-    script: |
-      $env:SRCCLR_API_TOKEN="$(SCA_TOKEN)"
-      Set-ExecutionPolicy AllSigned -Scope Process -Force
-      iex ((New-Object System.Net.WebClient).DownloadString('https://download.srcclr.com/ci.ps1'))
-      srcclr scan
-    pwsh: true
+    ConnectionDetailsSelection: 'Service Connection'
+    AnalysisService: 'Veracode Connection'
+    veracodeAppProfile: '$(AppName)'
+    sandboxName: '$(sandboxName)'
+    scanType: 'Static, SCA'
+    importType: 'All Unmitigated Flaws Violating Policy'
+    workItemType: 'Issue'
+    area: '$(system.teamProject)'
+    overwriteAreaPathInWorkItemsOnImport: true
+    iterationPath: '$(system.teamProject)'
+    flawImportLimit: '250'
