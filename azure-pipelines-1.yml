@@ -13,12 +13,12 @@ steps:
 - task: Veracode Flaw Importer@3
   inputs:
     ConnectionDetailsSelection: 'Endpoint'
-    AnalysisService: 'Veracode'
-    veracodeAppProfile: 'Verademo_DotNet'
-    sandboxName: 'DemoUploadScan'
-    scanType: 'Dynamic, Static, and Software Composition Analysis'
+    veracodeAppProfile: 'JustinDemo'
+    sandboxName: 
+    scanType: 'Static'
     importType: 'All Unmitigated Flaws Violating Policy'
     workItemType: 'Issue'
-    area: '$(system.teamProject)'
+    area: '$(system.teamProject)/Child1'
     overwriteAreaPathInWorkItemsOnImport: true
+    iterationPath: '$(system.teamProject)'
     flawImportLimit: '250'
