@@ -22,4 +22,4 @@ steps:
     area: '$(system.teamProject)\Child1'
     overwriteAreaPathInWorkItemsOnImport: true
     iterationPath: '$(system.teamProject)'
-    flawImportLimit: '5'
+    flawImportLimit: '25'
