@@ -19,7 +19,7 @@ steps:
     scanType: 'Static, SCA'
     importType: 'All Unmitigated Flaws Violating Policy'
     workItemType: 'Issue'
-    area: 'ADO Demo/Child1'
+    area: '$(system.teamProject)'
     overwriteAreaPathInWorkItemsOnImport: true
     iterationPath: '$(system.teamProject)'
-    flawImportLimit: '250'
+    flawImportLimit: '5'
